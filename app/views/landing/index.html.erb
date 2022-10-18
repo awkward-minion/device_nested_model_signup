@@ -1,0 +1,10 @@
+Guest,
+
+<% unless employee_signed_in?  %>
+please login                     <%=  link_to 'here',  new_employee_session_path %>
+<% end %> 
+
+
+<% if employee_signed_in?  %>
+    <%=  link_to 'signout', destroy_employee_session_path, data: { turbo_method: :delete }  %>
+<% end %> 
