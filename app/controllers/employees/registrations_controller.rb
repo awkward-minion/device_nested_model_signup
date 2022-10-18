@@ -13,9 +13,6 @@ class Employees::RegistrationsController < Devise::RegistrationsController
   def create
     super
     puts resource
-    # build_resource({})
-    # resource.build_company_employees
-    # respond_with self.resource
   end
 
   # GET /resource/edit
