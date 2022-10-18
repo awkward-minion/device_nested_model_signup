@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :company_employees
-  devise_for :employees
+  devise_for :employees, controllers: {
+    registrations: 'employee/registrations',
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
