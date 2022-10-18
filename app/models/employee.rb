@@ -6,4 +6,6 @@ class Employee < ApplicationRecord
 
   has_many :company_employees
   has_many :companies, :through => :company_employees
+
+  accepts_nested_attributes_for :company_employees
 end

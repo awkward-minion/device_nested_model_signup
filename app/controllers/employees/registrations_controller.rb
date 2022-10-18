@@ -10,9 +10,12 @@ class Employees::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # super
+    build_resource({})
+    resource.build_company_employees
+    respond_with self.resource
+  end
 
   # GET /resource/edit
   # def edit
@@ -42,7 +45,13 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [
+      :name,
+      :company_attributes => [
+        :name,
+        :founded
+      ]
+    ])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
