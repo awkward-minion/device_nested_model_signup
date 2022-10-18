@@ -11,10 +11,11 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # super
-    build_resource({})
-    resource.build_company_employees
-    respond_with self.resource
+    super
+    puts resource
+    # build_resource({})
+    # resource.build_company_employees
+    # respond_with self.resource
   end
 
   # GET /resource/edit
@@ -50,7 +51,11 @@ class Employees::RegistrationsController < Devise::RegistrationsController
       :company_attributes => [
         :name,
         :founded
-      ]
+      ],
+      :company_employees_attributes => [
+        :enrollment_id,
+        :designation
+      ],
     ])
   end
 

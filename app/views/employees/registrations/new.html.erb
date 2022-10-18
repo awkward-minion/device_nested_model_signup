@@ -1,6 +1,10 @@
 <h2>Sign up</h2>
 
-<% resource.build_company_employees if resource.company_employees.nil? %>
+<% resource.company_employees.build if resource.company_employees.empty? %>
+
+ <% resource.company_employees.first.company if resource.company_employees.first.company.nil? %> 
+
+<%= resource.company_employees.first.company.inspect%>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "employees/shared/error_messages", resource: resource %>
@@ -18,6 +22,21 @@
       <%= f.fields_for :company do |company_fields| %>
         <%= company_fields.label :founded %>
         <%= company_fields.text_field :founded %>
+      <% end %>
+    </div>
+
+    <h1>company_employees</h1>
+    <div class="field">
+      <%= f.fields_for :company_employees do |company_fields| %>
+        <%= company_fields.label :enrollment_id %>
+        <%= company_fields.text_field :enrollment_id %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.fields_for :company_employees do |company_fields| %>
+        <%= company_fields.label :designation %>
+        <%= company_fields.text_field :designation %>
       <% end %>
     </div>
 
